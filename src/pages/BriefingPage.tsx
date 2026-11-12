@@ -1,8 +1,6 @@
 import {
   Box,
   Button,
-  Card,
-  CardContent,
   Stack,
   Typography,
 } from '@mui/material'
@@ -11,10 +9,15 @@ import DateNavigator from '../components/DateNavigator'
 import { getTodayString, parseDateString } from '../utils/date'
 import ApodCard from '../components/ApodCard'
 import OnThisDayCard from '../components/OnThisDayCard'
+import WeatherCard from '../components/WeatherCard'
+import { DEFAULT_CITY } from '../data/cities'
+import { useState } from 'react'
 
 
 function BriefingPage() {
   const { date } = useParams()
+
+  const [city, setCity] = useState(DEFAULT_CITY)
 
   if (!date || !parseDateString(date)) {
     return (
@@ -45,13 +48,7 @@ function BriefingPage() {
       <DateNavigator date={date} />
 
       <Stack spacing={2}>
-          <Card>
-            <CardContent>
-              <Typography variant="h6" component="h2" gutterBottom>
-                Weather
-              </Typography>
-            </CardContent>
-          </Card>
+        <WeatherCard date={date} city={city} onCityChange={setCity} />
 
           <ApodCard date={date} />
           
