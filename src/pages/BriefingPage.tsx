@@ -9,8 +9,8 @@ import {
 import { Link as RouterLink, useParams } from 'react-router-dom'
 import DateNavigator from '../components/DateNavigator'
 import { getTodayString, parseDateString } from '../utils/date'
+import ApodCard from '../components/ApodCard'
 
-const SECTION_TITLES = ['Weather', 'Astronomy picture', 'On this day']
 
 function BriefingPage() {
   const { date } = useParams()
@@ -44,15 +44,23 @@ function BriefingPage() {
       <DateNavigator date={date} />
 
       <Stack spacing={2}>
-        {SECTION_TITLES.map((title) => (
-          <Card key={title}>
+          <Card>
             <CardContent>
               <Typography variant="h6" component="h2" gutterBottom>
-                {title}
+                Weather
               </Typography>
             </CardContent>
           </Card>
-        ))}
+
+          <ApodCard date={date} />
+
+          <Card>
+            <CardContent>
+              <Typography variant="h6" component="h2" gutterBottom>
+                On this day
+              </Typography>
+            </CardContent>
+            </Card>
       </Stack>
     </Stack>
   )
