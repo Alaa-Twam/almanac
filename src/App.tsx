@@ -1,19 +1,21 @@
-import { AppBar, Toolbar, Typography, Container } from '@mui/material'
+import { Navigate, Route, Routes } from 'react-router-dom'
+import AppLayout from './components/AppLayout'
+import BriefingPage from './pages/BriefingPage'
+import NotFoundPage from './pages/NotFoundPage'
+import { getTodayString } from './utils/date'
 
 function App() {
   return (
-    <>
-      <AppBar position="static">
-        <Toolbar>
-          <Typography variant="h6" component="h1">
-            Almanac
-          </Typography>
-        </Toolbar>
-      </AppBar>
-      <Container sx={{ mt: 3 }}>
-        <Typography>Test Alaa</Typography>
-      </Container>
-    </>
+    <Routes>
+      <Route element={<AppLayout />}>
+        <Route
+          path="/"
+          element={<Navigate to={`/date/${getTodayString()}`} replace />}
+        />
+        <Route path="/date/:date" element={<BriefingPage />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Route>
+    </Routes>
   )
 }
 
