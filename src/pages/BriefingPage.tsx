@@ -10,6 +10,7 @@ import { Link as RouterLink, useParams } from 'react-router-dom'
 import DateNavigator from '../components/DateNavigator'
 import { getTodayString, parseDateString } from '../utils/date'
 import ApodCard from '../components/ApodCard'
+import OnThisDayCard from '../components/OnThisDayCard'
 
 
 function BriefingPage() {
@@ -53,14 +54,8 @@ function BriefingPage() {
           </Card>
 
           <ApodCard date={date} />
-
-          <Card>
-            <CardContent>
-              <Typography variant="h6" component="h2" gutterBottom>
-                On this day
-              </Typography>
-            </CardContent>
-            </Card>
+          
+          <OnThisDayCard date={date} />
       </Stack>
     </Stack>
   )
