@@ -1,11 +1,17 @@
 import { AppBar, Box, Button, Toolbar, Typography } from '@mui/material'
 import { Link as RouterLink, Outlet } from 'react-router-dom'
 import { getTodayString } from '../utils/date'
+import { useState } from 'react'
+import { useBookmarks } from '../hooks/useBookmarks'
+import BookmarksPanel from './BookmarksPanel'
+
 
 const COLUMN_MAX_WIDTH = 760
 
 function AppLayout() {
   const todayPath = `/date/${getTodayString()}`
+  const { bookmarks } = useBookmarks()
+  const [bookmarksOpen, setBookmarksOpen] = useState(false)
 
   return (
     <>
@@ -27,8 +33,8 @@ function AppLayout() {
             Almanac
           </Typography>
 
-          <Button color="inherit" disabled>
-            Bookmarks
+          <Button color="inherit" onClick={()=>setBookmarksOpen(true)}>
+            Bookmarks ({bookmarks.length})
           </Button>
         </Toolbar>
       </AppBar>
@@ -39,6 +45,10 @@ function AppLayout() {
       >
         <Outlet />
       </Box>
+
+      <BookmarksPanel
+      open={bookmarksOpen}
+      onClose={() => setBookmarksOpen(false)}/>
     </>
   )
 }
