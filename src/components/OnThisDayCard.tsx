@@ -21,9 +21,9 @@ interface OnThisDayCardProps {
 const PAGE_SIZE = 10
 
 const TABS = [
-  { label: 'Events', kind: 'events' },
-  { label: 'Births', kind: 'births' },
-  { label: 'Deaths', kind: 'deaths' },
+  { label: 'Events', kind: 'events', bookmarkKind: 'event' },
+  { label: 'Births', kind: 'births', bookmarkKind: 'birth' },
+  { label: 'Deaths', kind: 'deaths', bookmarkKind: 'death' },
 ] as const
 
 function OnThisDayCard({ date }: OnThisDayCardProps) {
@@ -55,8 +55,9 @@ function OnThisDayCard({ date }: OnThisDayCardProps) {
     return null
   }
 
-  const kind = TABS[tab].kind
-  const items = [...data[kind]].sort((a, b) => b.year - a.year)
+  const activeTab = TABS[tab]
+
+  const items = [...data[activeTab.kind]].sort((a, b) => b.year - a.year)
   const visible = items.slice(0, visibleCount)
 
   return (
@@ -84,8 +85,10 @@ function OnThisDayCard({ date }: OnThisDayCardProps) {
           <Box sx={{ mt: 1 }}>
             {visible.map((item) => (
               <OnThisDayItem
-                key={`${kind}:${item.year}:${item.text}`}
+                key={`${activeTab.kind}:${item.year}:${item.text}`}
                 item={item}
+                kind={activeTab.bookmarkKind}
+                date={date}
               />
             ))}
             {visibleCount < items.length && (

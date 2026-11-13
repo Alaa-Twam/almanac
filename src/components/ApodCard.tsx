@@ -5,12 +5,15 @@ import {
   CardContent,
   CardMedia,
   Typography,
+  Box,
 } from '@mui/material'
 import { ApiError } from '../api/http'
 import { useApod } from '../hooks/useApod'
 import CardSkeleton from './CardSkeleton'
 import ErrorAlert from './ErrorAlert'
 import { formatLongDate } from '../utils/date'
+import BookmarkButton from './BookmarkButton'
+import { createApodBookmark } from '../utils/bookmarkFactories'
 
 interface ApodCardProps {
   date: string
@@ -60,9 +63,12 @@ function ApodCard({ date }: ApodCardProps) {
         />
       )}
       <CardContent>
+        <Box sx={{display: 'flex', alignItems: 'flex-start', gap: 1}}>
         <Typography variant="h6" component="h2">
           {data.title}
         </Typography>
+        <BookmarkButton bookmark={createApodBookmark(data)}/>
+        </Box>
         <Typography variant="body2" color="text.secondary" gutterBottom>
           {formatLongDate(data.date)}
         </Typography>
