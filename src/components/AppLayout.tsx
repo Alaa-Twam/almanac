@@ -4,6 +4,7 @@ import { getTodayString } from '../utils/date'
 import { useState } from 'react'
 import { useBookmarks } from '../hooks/useBookmarks'
 import BookmarksPanel from './BookmarksPanel'
+import { Bookmarks } from '@mui/icons-material'
 
 
 const COLUMN_MAX_WIDTH = 760
@@ -15,7 +16,7 @@ function AppLayout() {
 
   return (
     <>
-      <AppBar position="static" elevation={0}>
+      <AppBar position="sticky" elevation={0} color='transparent' sx={{backgroundColor: 'background.default'}}>
         <Toolbar
           sx={{ width: '100%', maxWidth: COLUMN_MAX_WIDTH, mx: 'auto', gap: 1 }}
         >
@@ -33,7 +34,7 @@ function AppLayout() {
             Almanac
           </Typography>
 
-          <Button color="inherit" onClick={()=>setBookmarksOpen(true)}>
+          <Button color="inherit" onClick={()=>setBookmarksOpen(true)} startIcon={<Bookmarks/>}>
             Bookmarks ({bookmarks.length})
           </Button>
         </Toolbar>

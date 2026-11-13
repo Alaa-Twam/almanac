@@ -15,7 +15,7 @@ function OnThisDayItem({ item, kind, date }: OnThisDayItemProps) {
   const url = item.pages[0]?.content_urls?.desktop?.page
 
   return (
-    <Box sx={{ display: 'flex', gap: 1.5, py: 1 }}>
+    <Box sx={{ display: 'flex', gap: 1.5, py: 1, alignItems:'flex-start', borderBottom: '1px solid', borderColor:'divider', }}>
       <Chip label={item.year} size="small" />
       <Box sx={{flexGrow: 1}}>
         <Typography variant="body2">{item.text}</Typography>

@@ -13,40 +13,55 @@ function DateNavigator({ date }: DateNavigatorProps) {
 
   const goTo = (target: string) => navigate(`/date/${target}`)
 
+  const neighbour = {
+    minHeight: 44,
+    minWidth: 44,
+    px: 1,
+    borderRadius: 1,
+    color: 'text.secondary',
+    '&:hover': {color: 'text.primary', textDecoration: 'underline'},
+  }
+
+  const connector = {
+    flexGrow: 1,
+    height: 0,
+    borderTop: '1px solid',
+    borderColor: 'divider',
+  }
+
   return (
     <Box>
       <Box
         sx={{
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'space-between',
-          gap: 1,
+          gap: 1.5,
         }}
       >
         <ButtonBase
           onClick={() => goTo(previous)}
           aria-label={`Go to ${formatLongDate(previous)}`}
-          sx={{ minHeight: 44, minWidth: 44, px: 1, borderRadius: 1 }}
+          sx={neighbour}
         >
-          <Typography variant="body2" color="text.secondary">
+          <Typography variant="body2" sx={{color: 'inherit'}}>
             {formatShortDate(previous)}
           </Typography>
         </ButtonBase>
-
+<Box aria-hidden="true" sx={connector} />
         <Typography
           variant="h5"
           component="h2"
-          sx={{ fontWeight: 700, textAlign: 'center' }}
+          sx={{ fontWeight: 700, textAlign: 'center', }}
         >
           {formatLongDate(date)}
         </Typography>
-
+          <Box aria-hidden="true" sx={connector} />
         <ButtonBase
           onClick={() => goTo(next)}
           aria-label={`Go to ${formatLongDate(next)}`}
-          sx={{ minHeight: 44, minWidth: 44, px: 1, borderRadius: 1 }}
+          sx={neighbour}
         >
-          <Typography variant="body2" color="text.secondary">
+          <Typography variant="body2" sx={{color:'inherit'}}>
             {formatShortDate(next)}
           </Typography>
         </ButtonBase>
@@ -61,7 +76,11 @@ function DateNavigator({ date }: DateNavigatorProps) {
           if (value) goTo(value)
         }}
         fullWidth
-        sx={{ mt: 2 }}
+        sx={{ mt: 2,
+          '& input::-webkit-calendar-picker-indicator': {
+            filter: 'invert(1)',
+            cursor: 'pointer',
+         },}}
         slotProps={{ inputLabel: { shrink: true } }}
       />
     </Box>

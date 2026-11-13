@@ -29,7 +29,7 @@ function BookmarksPanel({ open, onClose }: BookmarksPanelProps) {
       <div className={styles.panel}>
         <div className={styles.header}>
           <h2 className={styles.title}>Saved ({bookmarks.length})</h2>
-          <IconButton onClick={onClose} aria-label="Close bookmarks">
+          <IconButton onClick={onClose} aria-label="Close bookmarks" color='inherit'>
             <Close />
           </IconButton>
         </div>
@@ -83,6 +83,8 @@ function BookmarksPanel({ open, onClose }: BookmarksPanelProps) {
                   <Button
                     className={styles.removeButton}
                     size="small"
+                    variant='outlined'
+                    color='inherit'
                     onClick={() => removeBookmark(bookmark.id)}
                   >
                     Remove

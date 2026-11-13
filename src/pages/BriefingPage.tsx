@@ -41,19 +41,24 @@ function BriefingPage() {
 
   return (
     <Stack spacing={3}>
-      <Typography variant="h6" component="p">
+      <Typography variant="h2" component="h1"
+      sx={{ textAlign: 'center', fontWeight: 700, mt: 1 }}
+      >
         Hodie!
       </Typography>
 
       <DateNavigator date={date} />
 
-      <Stack spacing={2}>
-        <WeatherCard date={date} city={city} onCityChange={setCity} />
+      <Typography color="text.secondary" sx={{ textAlign: 'center' }}>
+        Scroll down to see the photo of the day, the weather, and historical events for this date.
+      </Typography>
 
-          <ApodCard date={date} />
-          
-          <OnThisDayCard date={date} />
-      </Stack>
+      <ApodCard date={date} />
+
+      <WeatherCard date={date} city={city} onCityChange={setCity} />
+
+      <OnThisDayCard date={date} />
+
     </Stack>
   )
 }

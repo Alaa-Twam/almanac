@@ -27,6 +27,7 @@ function BookmarkButton({ bookmark }: BookmarkButtonProps) {
         aria-label={label}
         aria-pressed={saved}
         size="small"
+        sx={{ color: saved ? 'primary.main' : 'inherit' }}
       >
         {saved ? <Bookmark /> : <BookmarkBorder />}
       </IconButton>
