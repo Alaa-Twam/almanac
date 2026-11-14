@@ -1,4 +1,4 @@
-import { createTheme } from '@mui/material/styles'
+import { createTheme, alpha } from '@mui/material/styles'
 
 const BACKGROUND = '#0e100fff'
 const SURFACE = '#151a17ff'
@@ -7,6 +7,7 @@ const TEXT_FADED = '#a7b3ad'
 const BORDER = '#434e48'
 const BORDER_STRONG = '#5a665f'
 const ACCENT = '#e3b341'
+const PANEL = '#3b4942'
 
 const SANS = 'system-ui, -apple=system, "Segoe UI", Roboto, Arial, sans-serif'
 const SERIF = 'Georgia, "Times New Roman", Times, serif'
@@ -41,6 +42,7 @@ const theme = createTheme({
           '--almanac-border-strong': BORDER_STRONG,
           '--almanac-text-faded': TEXT_FADED,
           '--almanac-accent': ACCENT,
+          '--almanac-panel': alpha(PANEL, 0.9),
         },
         body: {
           overflowX: 'clip',
