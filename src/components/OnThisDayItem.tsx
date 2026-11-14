@@ -1,8 +1,10 @@
-import { Box, Chip, Link, Typography } from '@mui/material'
+import { Box, Chip, Button, Typography } from '@mui/material'
 import type { OnThisDayEvent } from '../types/onThisDay'
 import BookmarkButton from './BookmarkButton'
 import { createOnThisDayBookmark } from '../utils/bookmarkFactories'
-import type { BookmarkKind } from '../types/bookmark' 
+import type { BookmarkKind } from '../types/bookmark'
+import { useState } from 'react'
+import SummaryDialog from './SummaryDialog'
 
 
 interface OnThisDayItemProps {
@@ -12,22 +14,30 @@ interface OnThisDayItemProps {
 }
 
 function OnThisDayItem({ item, kind, date }: OnThisDayItemProps) {
-  const url = item.pages[0]?.content_urls?.desktop?.page
+  const [summaryOpen, setSummaryOpen] = useState(false)
+  const firstPage = item.pages[0]
 
   return (
     <Box sx={{ display: 'flex', gap: 1.5, py: 1, alignItems:'flex-start', borderBottom: '1px solid', borderColor:'divider', }}>
       <Chip label={item.year} size="small" />
       <Box sx={{flexGrow: 1}}>
         <Typography variant="body2">{item.text}</Typography>
-        {url && (
-          <Link
-            href={url}
-            target="_blank"
-            rel="noopener noreferrer"
-            variant="caption"
+        {firstPage && (
+          <>
+          <Button
+          size="small"
+          onClick={() => setSummaryOpen(true)}
+          sx={{px:0, mt: 0.5}}
           >
-            Read on Wikipedia
-          </Link>
+            Learn More
+          </Button>
+          <SummaryDialog
+            open={summaryOpen}
+            onClose={() => setSummaryOpen(false)}
+            title={firstPage.title}
+            />
+          </>
+
         )}
       </Box>
       <BookmarkButton bookmark={createOnThisDayBookmark(kind, item, date)} />
