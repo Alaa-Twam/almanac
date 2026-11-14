@@ -22,6 +22,7 @@ function DateNavigator({ date }: DateNavigatorProps) {
     borderRadius: 1,
     color: 'text.secondary',
     '&:hover': {color: 'text.primary', textDecoration: 'underline'},
+    '&:focus-visible': {outline: '2px solid', outlineColor: 'primary.main', outlineOffset: 2},
   }
 
   const connector = {
