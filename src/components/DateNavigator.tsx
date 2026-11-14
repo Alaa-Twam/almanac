@@ -1,6 +1,7 @@
-import { Box, ButtonBase, TextField, Typography } from '@mui/material'
+import { Box, ButtonBase, TextField, Typography, useMediaQuery } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
-import { addDays, formatLongDate, formatShortDate } from '../utils/date'
+import { addDays, formatLongDate, formatShortDate, formatMediumDate } from '../utils/date'
+import { ChevronLeft, ChevronRight } from '@mui/icons-material'
 
 interface DateNavigatorProps {
   date: string
@@ -10,6 +11,7 @@ function DateNavigator({ date }: DateNavigatorProps) {
   const navigate = useNavigate()
   const previous = addDays(date, -1)
   const next = addDays(date, 1)
+  const isMobile = useMediaQuery((theme)=> theme.breakpoints.down('sm'))
 
   const goTo = (target: string) => navigate(`/date/${target}`)
 
@@ -43,17 +45,20 @@ function DateNavigator({ date }: DateNavigatorProps) {
           aria-label={`Go to ${formatLongDate(previous)}`}
           sx={neighbour}
         >
+          {isMobile ? (<ChevronLeft/>):
+          (
           <Typography variant="body2" sx={{color: 'inherit'}}>
             {formatShortDate(previous)}
           </Typography>
+        )}
         </ButtonBase>
 <Box aria-hidden="true" sx={connector} />
         <Typography
           variant="h5"
           component="h2"
-          sx={{ fontWeight: 700, textAlign: 'center', }}
+          sx={{ fontWeight: 700, textAlign: 'center', minWidth: 0, fontSize: {xs: '1.05rem', sm: '1.5rem'}, }}
         >
-          {formatLongDate(date)}
+          {isMobile ? formatMediumDate(date) : formatLongDate(date)}
         </Typography>
           <Box aria-hidden="true" sx={connector} />
         <ButtonBase
@@ -61,9 +66,12 @@ function DateNavigator({ date }: DateNavigatorProps) {
           aria-label={`Go to ${formatLongDate(next)}`}
           sx={neighbour}
         >
-          <Typography variant="body2" sx={{color:'inherit'}}>
+          {isMobile ? (<ChevronRight/>):
+          (
+          <Typography variant="body2" sx={{color: 'inherit'}}>
             {formatShortDate(next)}
           </Typography>
+        )}
         </ButtonBase>
       </Box>
 

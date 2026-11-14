@@ -73,6 +73,13 @@ const theme = createTheme({
     MuiSelect: {
       styleOverrides: {icon: {color: TEXT_FADED}},
     },
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          minHeight: 44,
+        }
+      }
+    },
   }
 })
 

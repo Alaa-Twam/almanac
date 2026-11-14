@@ -79,3 +79,14 @@ export function formatDayMonth(value: string): string {
     month: 'long',
   }).format(date)
 }
+
+export function formatMediumDate(value: string): string {
+  const date = parseDateString(value)
+  if(!date) throw new Error(`formatMediumDate: invalid date string "${value}"`)
+  return new Intl.DateTimeFormat('en-US', {
+    weekday: 'short',
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric',
+  }).format(date)
+}

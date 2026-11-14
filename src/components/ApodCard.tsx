@@ -21,7 +21,7 @@ function ApodCard({ date }: ApodCardProps) {
 
   if (isPending) {
     return (
-      <Skeleton variant='rectangular' height={360} sx={{borderRadius:2}}/>
+      <Skeleton variant='rectangular' sx={{borderRadius:2, width:'100%', aspectRatio: '16/9'}}/>
     )
   }
 
@@ -95,7 +95,7 @@ return (
       sx={{
         display: 'block',
         width: '100%',
-        maxHeight: 440,
+        aspectRatio: '16/9',
         objectFit: 'cover',
       }}
       />
