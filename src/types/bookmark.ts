@@ -5,8 +5,8 @@ export interface Bookmark {
   kind: BookmarkKind
   title: string
   description: string
-  date: string 
+  date: string
   imageUrl?: string
   link?: string
-  savedAt: string 
+  savedAt: string
 }

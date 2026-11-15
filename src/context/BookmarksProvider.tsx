@@ -10,9 +10,7 @@ interface BookmarksProviderProps {
 }
 
 function BookmarksProvider({ children }: BookmarksProviderProps) {
-    
   const [bookmarks, dispatch] = useReducer(bookmarksReducer, [], loadBookmarks)
-
 
   useEffect(() => {
     saveBookmarks(bookmarks)

@@ -8,7 +8,6 @@ export class ApiError extends Error {
   }
 }
 
-
 export async function fetchJson<T>(
   url: string,
   signal?: AbortSignal,

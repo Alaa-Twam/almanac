@@ -1,4 +1,13 @@
-import { Box, CircularProgress, Dialog, DialogContent, DialogTitle, IconButton, Link, Typography,} from '@mui/material'
+import {
+  Box,
+  CircularProgress,
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  IconButton,
+  Link,
+  Typography,
+} from '@mui/material'
 import { Close } from '@mui/icons-material'
 import { useWikiSummary } from '../hooks/useWikiSummary'
 import ErrorAlert from './ErrorAlert'
@@ -18,7 +27,12 @@ function SummaryDialog({ open, onClose, title }: SummaryDialogProps) {
         <Box component="span" sx={{ flexGrow: 1 }}>
           {data?.title ?? title.replace(/_/g, ' ')}
         </Box>
-        <IconButton onClick={onClose} aria-label="Close" size="small" color='inherit'>
+        <IconButton
+          onClick={onClose}
+          aria-label="Close"
+          size="small"
+          color="inherit"
+        >
           <Close />
         </IconButton>
       </DialogTitle>

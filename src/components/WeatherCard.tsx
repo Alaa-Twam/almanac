@@ -71,14 +71,14 @@ function WeatherCard({ date, city, onCityChange }: WeatherCardProps) {
             flexWrap: 'wrap',
             mb: 1,
           }}
-          >
-        <Typography variant="h6" component="h2">
-          Weather in {city.name}
-        </Typography>
-        <Box sx={{flexGrow: 1, minWidth: 150}}>
-        <CitySelect value={city} onChange={onCityChange} />
-        </Box>
+        >
+          <Typography variant="h6" component="h2">
+            Weather in {city.name}
+          </Typography>
+          <Box sx={{ flexGrow: 1, minWidth: 150 }}>
+            <CitySelect value={city} onChange={onCityChange} />
           </Box>
+        </Box>
 
         <Box sx={{ mt: 2 }}>{body}</Box>
       </CardContent>

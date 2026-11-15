@@ -43,12 +43,7 @@ function OnThisDayCard({ date }: OnThisDayCardProps) {
   }
 
   if (isError) {
-    return (
-      <ErrorAlert
-        message="Couldn't data."
-        onRetry={() => refetch()}
-      />
-    )
+    return <ErrorAlert message="Couldn't data." onRetry={() => refetch()} />
   }
 
   if (!data) {
@@ -71,7 +66,7 @@ function OnThisDayCard({ date }: OnThisDayCardProps) {
           value={tab}
           onChange={(_, value) => setTab(value)}
           aria-label="On this day categories"
-          variant='fullWidth'
+          variant="fullWidth"
         >
           {TABS.map((item) => (
             <Tab key={item.kind} label={item.label} />

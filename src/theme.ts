@@ -12,7 +12,6 @@ const PANEL = '#3b4942'
 const SANS = 'system-ui, -apple=system, "Segoe UI", Roboto, Arial, sans-serif'
 const SERIF = 'Georgia, "Times New Roman", Times, serif'
 
-
 const theme = createTheme({
   palette: {
     primary: { main: ACCENT, contrastText: BACKGROUND },
@@ -23,7 +22,7 @@ const theme = createTheme({
     warning: { main: '#ff9800' },
     error: { main: '#f44336' },
   },
-  shape: {borderRadius: 10},
+  shape: { borderRadius: 10 },
   typography: {
     fontFamily: SANS,
     h1: { fontFamily: SERIF },
@@ -51,36 +50,39 @@ const theme = createTheme({
     },
 
     MuiPaper: {
-      styleOverrides: { root: { backgroundImage: 'none'}},
-
+      styleOverrides: { root: { backgroundImage: 'none' } },
     },
     MuiCard: {
-      defaultProps: {elevation: 0},
-      styleOverrides: { root: { border: `1px solid ${BORDER}`}},
+      defaultProps: { elevation: 0 },
+      styleOverrides: { root: { border: `1px solid ${BORDER}` } },
     },
     MuiIconButton: {
-      styleOverrides: { root: { minWidth: 44, minHeight: 44}},
+      styleOverrides: { root: { minWidth: 44, minHeight: 44 } },
     },
     MuiOutlinedInput: {
       styleOverrides: {
         root: {
-          '& .MuiOutlinedInput-notchedOutline': {borderColor: BORDER_STRONG},
-          '&:hover .MuiOutlinedInput-notchedOutline': {borderColor: TEXT_FADED},
-          '&.Mui-focused .MuiOutlinedInput-notchedOutline': {borderColor: TEXT_PIRMARY},
+          '& .MuiOutlinedInput-notchedOutline': { borderColor: BORDER_STRONG },
+          '&:hover .MuiOutlinedInput-notchedOutline': {
+            borderColor: TEXT_FADED,
+          },
+          '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+            borderColor: TEXT_PIRMARY,
+          },
         },
       },
     },
     MuiSelect: {
-      styleOverrides: {icon: {color: TEXT_FADED}},
+      styleOverrides: { icon: { color: TEXT_FADED } },
     },
     MuiButton: {
       styleOverrides: {
         root: {
           minHeight: 44,
-        }
-      }
+        },
+      },
     },
-  }
+  },
 })
 
 export default theme

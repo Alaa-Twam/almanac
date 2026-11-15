@@ -23,10 +23,10 @@ createRoot(document.getElementById('root')!).render(
       <CssBaseline />
       <QueryClientProvider client={queryClient}>
         <BookmarksProvider>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-      </BookmarksProvider>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </BookmarksProvider>
       </QueryClientProvider>
     </ThemeProvider>
   </StrictMode>,

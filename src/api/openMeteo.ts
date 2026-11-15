@@ -8,10 +8,10 @@ const DAILY =
 
 function pickEndpoint(date: string): 'forecast' | 'archive' | null {
   const today = getTodayString()
-  if (date > addDays(today, 15)) return null 
-  if (date >= addDays(today, -90)) return 'forecast' 
-  if (date >= '1940-01-01') return 'archive' 
-  return null 
+  if (date > addDays(today, 15)) return null
+  if (date >= addDays(today, -90)) return 'forecast'
+  if (date >= '1940-01-01') return 'archive'
+  return null
 }
 
 export async function getWeather(
